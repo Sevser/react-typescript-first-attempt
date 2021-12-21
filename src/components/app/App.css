@@ -1,0 +1,11 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  padding: 80px 220px;
+}
+
+.application-title {
+  weight: 700;
+  font-size: 40px;
+  Color: #0A235C;
+}

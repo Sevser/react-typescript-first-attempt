@@ -1,6 +1,6 @@
 # Assignment
 
-This assignment should be considered time-slotted. You should try to get as far as possible within approximately three hours.
+
 
 The assignment consists of the following tasks:
 1. Your TypeScript skills will be evaluated by your ability to transform one data structure into another

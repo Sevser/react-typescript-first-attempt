@@ -1,0 +1,30 @@
+.issue-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.issue-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.issue-title {
+    font-size: 24px;
+    color: #008080;
+}
+
+.issue-subtitle {
+    font-size: 16px;
+    color: #60739F;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+}
+.comments-title {
+    font-size: 24px;
+    color: #008080;
+    margin: 0 24px 16px;
+}
