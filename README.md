@@ -28,10 +28,7 @@ Open `./src/app.tsx` and add a form with a `user` and a `repo` text field, and a
 Modify the code, so that the events returned by `./src/api/github-events.api.ts` reflects what has been submitted through the form, i.e. `microsoft`
 should be replaced by the value of the `user` field, and `TypeScript` should be replaced by the value of the `repo` field.
 
-### 3. Rendering a nice user experience
-
-Open the comp at https://www.sketch.com/s/f40d714d-b01d-4bdd-8099-e89386416560 and start changing the code in `./src/app.tsx` to be as close as possible to the comp.
-
+s
 Hints:
 1. You can use the inspector in the comp, to view css properties
 2. You can format the markup in the body fields, by using the `react-markdown` module, which is available here: https://github.com/remarkjs/react-markdown
