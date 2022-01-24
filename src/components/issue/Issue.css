@@ -16,6 +16,10 @@
 .issue-title {
     font-size: 24px;
     color: #008080;
+    cursor: pointer;
+}
+.issue-title:hover, .issue-title:active {
+    text-decoration: underline;
 }
 
 .issue-subtitle {

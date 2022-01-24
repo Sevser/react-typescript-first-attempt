@@ -19,8 +19,8 @@ export const getIssues = () : AppThunk => {
       dispatch(setLoading(true));
       try {
           const baseURL: string = "https://api.github.com/repos/"
-          const user = 'judaicalink';
-          const repo = 'judaicalink-labs';
+          const user = 'bootstrap-vue';
+          const repo = 'bootstrap-vue';
           const res = await axios.get(
               `${baseURL}${user}/${repo}/issues`
           )

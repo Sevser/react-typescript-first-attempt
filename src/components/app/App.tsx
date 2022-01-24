@@ -30,7 +30,7 @@ function App() {
             </button>
         </div>
         <div className="issues-container">
-            {issues.map(issue => <Issue issue={issue} />)}
+            {issues.map((issue: any) => <Issue key={issue.id} issue={issue} />)}
         </div>
     </div>
   );
