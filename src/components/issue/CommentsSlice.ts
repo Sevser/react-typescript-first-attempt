@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AppThunkComments } from "../../redux/app";
 
 
-type comment = {
+type comments = {
     [key: string]: Array<any>
 }
 
@@ -15,7 +15,7 @@ type errors = {
 }
 
 export interface CommentsState {
-    comments: comment,
+    comments: comments,
     loading: loading,
     errors: errors,
 }
@@ -33,42 +33,46 @@ export interface getCommentParams {
 
 export const getComments = (params: getCommentParams) : AppThunkComments => {
     return async (dispatch) => {
-        dispatch(setLoading([params.number, true]));
+        dispatch(commentsSlice.actions['comments/setLoading']([params.number, true]));
         try {
             const baseURL: string = "https://api.github.com/repos/"
             const res = await axios.get(`${params.url}`)
-            dispatch(setIssues(res.data))
+            dispatch(commentsSlice.actions['comments/setComments'](['' + params.number, res.data]))
         } catch (error) {
             let errorMessage = "Failed to do something exceptional";
             if (error instanceof Error) {
-                dispatch(setErrors(['' + params.number, error.message]));
+                dispatch(commentsSlice.actions['comments/setErrors'](['' + params.number, error.message]));
                 errorMessage = error.message;
             }
             console.log(errorMessage);
         } finally {
-            dispatch(setLoading([params.number, false]));
+            dispatch(commentsSlice.actions['comments/setLoading']([params.number, false]));
         }
     };
 }
 
 const commentsSlice = createSlice({
-    name: 'issues',
+    name: 'comments',
     initialState,
     reducers: {
-        setLoading: (state, { payload }: PayloadAction<Array<any>>) => {
+        ['comments/setLoading']: (state, { payload }: PayloadAction<Array<any>>) => {
             state.loading[payload[0]] = payload[1];
         },
-        setErrors: (state, { payload }: PayloadAction<Array<any>>) => {
+        ['comments/setErrors']: (state, { payload }: PayloadAction<Array<any>>) => {
             state.errors[payload[0]] = payload[1];
         },
-        setIssues: (state, { payload }: PayloadAction<Array<any>>) => {
+        ['comments/setComments']: (state, { payload }: PayloadAction<Array<any>>) => {
             state.comments[payload[0]] = payload[1];
         },
     },
 })
 
-export const { setLoading, setErrors, setIssues } = commentsSlice.actions
+export const actions = {
+    setLoading: commentsSlice.actions['comments/setLoading'],
+    setErrors: commentsSlice.actions['comments/setErrors'],
+    setComments: commentsSlice.actions['comments/setComments'],
+};
 
 export default commentsSlice.reducer
 
-export const commentsSelector = (state: { commentsState: CommentsState }) => state.commentsState
+export const commentsSelector = (state: { commentsStore: CommentsState }) => state.commentsStore

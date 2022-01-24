@@ -23,7 +23,7 @@ function Issue({ issue }: { issue: any }) {
                     <ReactMarkdown children={issue.body} />
                 </div>
             </div>
-            <Comments count={issue.comments} url={issue.comments_url}/>
+            <Comments number={issue.number} count={issue.comments} url={issue.comments_url}/>
         </div>
     );
 }

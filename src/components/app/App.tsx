@@ -6,7 +6,7 @@ import {getIssueParams, getIssues, issuesSelector} from "../issue/IssuesSlice";
 
 function App() {
     const dispatch = useDispatch();
-    const { issues } = useSelector(issuesSelector);
+    const { issues, loading } = useSelector(issuesSelector);
     let [user, setUser] = useState('');
     let [repo, setRepo] = useState('');
     let [buttonDisabled, setDisabled] = useState(true);
@@ -55,7 +55,9 @@ function App() {
         <div
             ref={scrollBlock}
             className="issues-container">
-            {issues.length ? issues.map((issue: any) => <Issue key={issue.id} issue={issue} />) : 'нет записей'}
+            {
+                loading ? 'идет загрузка' : (issues.length ? issues.map((issue: any) => <Issue key={issue.id} issue={issue} />) : 'нет записей')
+            }
         </div>
     </div>
   );

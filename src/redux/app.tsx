@@ -1,11 +1,12 @@
 import { configureStore, Action } from '@reduxjs/toolkit';
 import issuesSliceReducer, {getIssueParams, IssuesState} from '../components/issue/IssuesSlice';
 import { ThunkAction } from "@reduxjs/toolkit";
-import {CommentsState} from "../components/issue/CommentsSlice";
+import commentsSliceReducer, {CommentsState} from "../components/issue/CommentsSlice";
 
 const store = configureStore({
   reducer: {
-    issuesStore: issuesSliceReducer
+    issuesStore: issuesSliceReducer,
+    commentsStore: commentsSliceReducer,
   },
 });
 
