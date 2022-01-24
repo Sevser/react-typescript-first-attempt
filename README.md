@@ -1,3 +1,5 @@
+##Check it out [Here](https://sevser.github.io/react-typescript-first-attempt/)
+
 # Assignment
 
 
@@ -15,23 +17,6 @@ Your solution will be evaluated based on the quality of the produced code, as mu
 
 Aim towards producing production grade code, rather than maximising the amount of features.
 
-## Tasks
-
-### 1. Transforming the data
-
-Open `./src/api/github-events.api.ts` and complete the TODOs
-
-### 2. Submitting data with a form
-
-Open `./src/app.tsx` and add a form with a `user` and a `repo` text field, and a submit button.
-
-Modify the code, so that the events returned by `./src/api/github-events.api.ts` reflects what has been submitted through the form, i.e. `microsoft`
-should be replaced by the value of the `user` field, and `TypeScript` should be replaced by the value of the `repo` field.
-
-s
-Hints:
-1. You can use the inspector in the comp, to view css properties
-2. You can format the markup in the body fields, by using the `react-markdown` module, which is available here: https://github.com/remarkjs/react-markdown
 
 # Available Scripts
 
