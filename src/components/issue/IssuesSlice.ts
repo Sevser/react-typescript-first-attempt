@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { AppThunk } from "../../redux/app";
+import {AppThunkIssues} from "../../redux/app";
 
 export interface IssuesState {
     issues: object[],
@@ -14,15 +14,18 @@ const initialState: IssuesState = {
     errors: '',
 }
 
-export const getIssues = () : AppThunk => {
-    return async dispatch => {
+export interface getIssueParams {
+    user: string,
+    repo: string,
+}
+
+export const getIssues = (params: getIssueParams) : AppThunkIssues => {
+    return async (dispatch) => {
       dispatch(setLoading(true));
       try {
           const baseURL: string = "https://api.github.com/repos/"
-          const user = 'bootstrap-vue';
-          const repo = 'bootstrap-vue';
           const res = await axios.get(
-              `${baseURL}${user}/${repo}/issues`
+              `${baseURL}${params.user}/${params.repo}/issues`
           )
           dispatch(setIssues(res.data))
       } catch (error) {

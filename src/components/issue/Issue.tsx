@@ -1,33 +1,29 @@
 import React from 'react';
 import './Issue.css';
-import Comment from "./Comment";
 import {calcTimeAgo} from "../../utills";
 import ReactMarkdown from 'react-markdown'
+import Comments from "./Comments";
 
 function Issue({ issue }: { issue: any }) {
     return (
         <div className="issue-container">
             <div className="issue-header">
                 <a
-                    onClick={() => window.open(issue.html_url, 'blank')}
+                    href={issue.html_url}
+                    target={'_blank'}
                     className="issue-title">
                     {issue.title}
                 </a>
                 <div className="issue-subtitle">
-                    By <b>{issue.user.login}</b> • {calcTimeAgo(new Date(issue.updated_at))}
+                    By <a
+                        href={issue.user.html_url}
+                        target={'_blank'}><b>{issue.user.login}</b></a> • {calcTimeAgo(new Date(issue.updated_at))}
                 </div>
                 <div className="issue-body">
                     <ReactMarkdown children={issue.body} />
                 </div>
             </div>
-            <div className="comments-container">
-                <div className="comments-title">
-                    {issue.comments} comments
-                </div>
-                {
-                    issue.comments ? <Comment /> : null
-                }
-            </div>
+            <Comments count={issue.comments} url={issue.comments_url}/>
         </div>
     );
 }
